@@ -1,0 +1,109 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+  <div class="container-fluid">
+    <article>
+      <h2 class="h6">Pagination with multiple pages</h2>
+      <p class="small mb-3">When there are multiple pages the current count in the "per page" section should be highligted with a darker border.</p>
+      <div class="row border-top mt-1 py-1 width-cheat small">
+        <nav class="col-5 col-md-3 mt-2">
+          <ul class="pagination">
+            <li class="page-item active"><a href="#" tabindex="-1" class="page-link" aria-disabled="true">50</a></li>
+            <li class="page-item"><a href="#" tabindex="-1" class="page-link" aria-disabled="true">100</a></li>
+            <li class="page-item"><a href="#" tabindex="-1" class="page-link" aria-disabled="true">150</a></li>
+            <li class="d-flex align-items-center">per page</li>
+          </ul>
+        </nav>
+        <div class="col-2 col-md-6 d-flex justify-content-center align-items-center">
+          <!-- the number pipe formats numbers with commas -->
+          {{collectionSize | number}} agreements
+        </div>
+        <nav class="col-5 col-md-3 mt-2 pr-0 d-flex justify-content-end">
+          <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [maxSize]="maxSize" [rotate]="true" [pageSize]="perPage" [ellipses]="false" [boundaryLinks]="true" size="sm">
+            <ul class="pagination pagination-sm">
+              <ng-template ngbPaginationFirst><i class="fa fa-angle-double-left"></i></ng-template>
+              <ng-template ngbPaginationPrevious><i class="fa fa-angle-left"></i></ng-template>
+              <ng-template ngbPaginationNext><i class="fa fa-angle-right"></i></ng-template>
+              <ng-template ngbPaginationLast><i class="fa fa-angle-double-right"></i></ng-template>
+            </ul>
+          </ngb-pagination>
+        </nav>
+      </div>
+    </article>
+    <hr class="my-5">
+    <article>
+      <h2 class="h6">Selecting Per Page Amount Via Dropdrown</h2>
+      <p class="small mb-3">In cases where the the amount of rows per page options are more than three it mightbe advisable to use a dropdown for selection.</p>
+      <div class="row border-top mt-1 py-1 width-cheat small">
+        <nav class="col-5 col-md-3 mt-2">
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-primary  btn-xs mr-1" id="dropdownBasic1" ngbDropdownToggle>10</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button ngbDropdownItem>25</button>
+              <button ngbDropdownItem>50</button>
+              <button ngbDropdownItem>75</button>
+              <button ngbDropdownItem>100</button>
+            </div> per page
+          </div>
+        </nav>
+        <div class="col-2 col-md-6 d-flex justify-content-center align-items-center">
+          {{collectionSize | number}} results
+        </div>
+        <nav class="col-5 col-md-3 mt-2 pr-0 d-flex justify-content-end">
+          <ngb-pagination [disabled]="false" [collectionSize]="collectionSize" [(page)]="page" [maxSize]="maxSize" [rotate]="true" [pageSize]="perPage" [ellipses]="false" [boundaryLinks]="true" size="sm">
+            <ng-template ngbPaginationFirst><i class="fa fa-angle-double-left"></i></ng-template>
+            <ng-template ngbPaginationPrevious><i class="fa fa-angle-left"></i></ng-template>
+            <ng-template ngbPaginationNext><i class="fa fa-angle-right"></i></ng-template>
+            <ng-template ngbPaginationLast><i class="fa fa-angle-double-right"></i></ng-template>
+          </ngb-pagination>
+        </nav>
+      </div>
+    </article>
+    <hr class="my-5">
+    <article>
+      <h2 class="h6">Selecting Per Page Amount Via Dropdrown</h2>
+      <p class="small">The center column can be customized to include the range of rows currently beingdisplayed along with the total results. The text can be modified to meet the needs of business and users.In most cases it's recommended to refer to the rows as what they are (e.g., claims, agreements, servicecases) but the more generic "results" or "rows" can also be used. Some examples</p>
+      <ul class="lists-space small mt-0">
+        <li>Showing results 1 to 50 of 300</li>
+        <li>Displaying claims 1-50 of 300</li>
+        <li>Rows 1 through 50 of 300</li>
+        <li>Showing rows 1-50 (300 total)</li>
+      </ul>
+      <div class="row border-top mt-1 py-1 width-cheat small">
+        <nav class="col-5 col-md-3 mt-2">
+          <ul class="pagination">
+            <li class="page-item active"><a href="#" tabindex="-1" class="page-link" aria-disabled="true">50</a></li>
+            <li class="page-item"><a href="#" tabindex="-1" class="page-link" aria-disabled="true">100</a></li>
+            <li class="page-item"><a href="#" tabindex="-1" class="page-link" aria-disabled="true">150</a></li>
+            <li class="d-flex align-items-center">per page</li>
+          </ul>
+        </nav>
+        <div class="col-2 col-md-6 d-flex justify-content-center align-items-center">
+          <!-- Can choose from any of the following options
+            showingResultsText;
+            displayingClaimsText;
+            rowText;
+            showingRowsText;
+          -->
+          {{showingRowsText}}
+          1-{{perPage}} of {{collectionSize | number}}
+        </div>
+        <nav class="col-5 col-md-3 mt-2 pr-0 d-flex justify-content-end">
+          <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [maxSize]="maxSize" [rotate]="true" [pageSize]="perPage" [ellipses]="false" [boundaryLinks]="true" size="sm">
+            <ul class="pagination pagination-sm">
+              <ng-template ngbPaginationFirst><i class="fa fa-angle-double-left"></i></ng-template>
+              <ng-template ngbPaginationPrevious><i class="fa fa-angle-left"></i></ng-template>
+              <ng-template ngbPaginationNext><i class="fa fa-angle-right"></i></ng-template>
+              <ng-template ngbPaginationLast><i class="fa fa-angle-double-right"></i></ng-template>
+            </ul>
+          </ngb-pagination>
+
+        </nav>
+      </div>
+    </article>
+  </div>
+
+</body>
