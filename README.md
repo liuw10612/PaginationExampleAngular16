@@ -8,6 +8,7 @@ However, after upgrading to Angular 16.1.4, ng-bootstrap 15.0.1, the functionali
 li.page-item.disabled {
   display: none;
 }
+
 Unfortunately, this CSS rule doesn't seem to be working correctly in Angular 16.
 
 Here is the StackBlitz link to the sample project: StackBlitz Angular 10, ng-bootstrap 7 Pagination Example
